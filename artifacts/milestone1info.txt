@@ -1,0 +1,17 @@
+OOD Project
+
+Team Composition:
+    Swanora Campbell, Joseph Frost, Jacelynn Duranceau, Marc Colin
+
+Project Backstory:
+    This project will allow users to encounter random Pokemon. We plan on the XML
+    file to specify the region of Pokemon you want to encounter Pokemon in
+    (similar to selecting the kind of Pizza you want from the class example). 
+    Your choice will determine what kind of Pokemon have the chance to spawn upon
+    running the project. The act of spawning a random Pokemon will be performed
+    by dependency injection. The user will have the option to try to catch the
+    Pokemon they encounter, and if successful that Pokemon will persist within
+    tha database.
+
+Web API:
+    https://pokeapi.co/
