@@ -11,7 +11,7 @@ Project Backstory:
     running the project. The act of spawning a random Pokemon will be performed
     by dependency injection. The user will have the option to try to catch the
     Pokemon they encounter, and if successful that Pokemon will persist within
-    tha database.
+    the database.
 
 Web API:
     https://pokeapi.co/
