@@ -5,6 +5,7 @@ package rowan.ood.dimicroservice.microservice;
  *
  * Interface of the prime tester
  *
+ *
  */
 
 public interface PrimeTester {
