@@ -21,10 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import java.math.BigInteger;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 @Component
 public class PrimeTesterImpl implements PrimeTester {
@@ -61,9 +57,6 @@ public class PrimeTesterImpl implements PrimeTester {
         }
     }
 
-
-
-
     public String getPokemonName(int pokeID) {
 
         String pokemon = "";
@@ -88,7 +81,6 @@ public class PrimeTesterImpl implements PrimeTester {
         catch (Exception e) {
             e.getMessage();
         }
-
         return pokemon;
     }
 
@@ -179,6 +171,4 @@ public class PrimeTesterImpl implements PrimeTester {
 
         return type;
     }
-
-
 }
