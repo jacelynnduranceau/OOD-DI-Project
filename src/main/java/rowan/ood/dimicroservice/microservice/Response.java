@@ -9,18 +9,27 @@ package rowan.ood.dimicroservice.microservice;
 
 public class Response {
     String number;
-    String answer;
+    Boolean answer;
+    String pokeAnswer;
 
-    public Response(String number, String answer) {
+    public Response(String number, Boolean answer) {
         this.number = number;
         this.answer = answer;
     }
+
+    public Response(String number, String answer) {
+        this.number = number;
+        this.pokeAnswer = answer;
+    }
+
 
     public String getNumber() {
         return number;
     }
 
-    public String getAnswer() {
+    public Boolean getAnswer() {
         return answer;
     }
+
+    public String getPokeAnswer() { return pokeAnswer; }
 }

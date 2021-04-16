@@ -34,6 +34,12 @@ public class PrimeMicroservice {
     @GetMapping("/primetest")
     public String primetest(@Query(value = "p") String p) {
         // Use the injected prime tested to test for primality.
+        return new Gson().toJson(new Response(p, primeTester.isPrime(p)));
+    }
+
+    @GetMapping("/pokemon")
+    public String pokemontest(@Query(value = "p") String p) {
+        // Use the injected prime tested to test for primality.
         return new Gson().toJson(new Response(p, primeTester.isPokemon(p)));
     }
 }
