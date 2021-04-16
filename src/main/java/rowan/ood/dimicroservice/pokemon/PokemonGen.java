@@ -8,13 +8,20 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import org.springframework.jdbc.core.JdbcTemplate;
 import rowan.ood.dimicroservice.microservice.Pokemon;
 
 public abstract class PokemonGen {
 
+    private JdbcTemplate jdbcTemplate;
+
+    public PokemonGen(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
     abstract int generatePokeID();
 
-    public Pokemon generatePokemon(int pokeID){
+    private Pokemon generatePokemon(int pokeID){
         Pokemon pokemon = new Pokemon(String.valueOf(pokeID), getPokemonName(pokeID),
                               getPokemonHeight(pokeID),
                               getPokemonWeight(pokeID),

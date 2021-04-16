@@ -21,11 +21,11 @@ import rowan.ood.dimicroservice.pokemon.PokemonGenOne;
 @RestController
 public class PrimeMicroservice {
 
-    PrimeTester primeTester;
+    PokemonGen pokemonGen;
 
     @Autowired
-    public PrimeMicroservice(PrimeTester primeTester) {
-        this.primeTester = primeTester;
+    public PrimeMicroservice(PokemonGen pokemonGen) {
+        this.pokemonGen = pokemonGen;
     }
 
     @GetMapping("/pokeinfo")
@@ -36,9 +36,6 @@ public class PrimeMicroservice {
     @GetMapping("/pokemon")
     public String primetest(@Query(value = "p") String p) {
         // Use the injected prime tested to test for primality.
-        PokemonGenOne pokeOne = new PokemonGenOne();
-        Pokemon pokemon = pokeOne.generatePokemon();
-        return new Gson().toJson(pokemon);
+        return new Gson().toJson(pokemonGen.generatePokemon());
     }
-
 }

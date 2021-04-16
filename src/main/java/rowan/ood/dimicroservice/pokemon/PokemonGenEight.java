@@ -1,5 +1,7 @@
 package rowan.ood.dimicroservice.pokemon;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+
 import java.util.Random;
 
 public class PokemonGenEight extends PokemonGen{
@@ -8,8 +10,8 @@ public class PokemonGenEight extends PokemonGen{
     Random random = new Random();
     private int pokeID;
 
-    public PokemonGenEight() {
-        super();
+    public PokemonGenEight(JdbcTemplate jdbcTemplate) {
+        super(jdbcTemplate);
     }
 
     @Override

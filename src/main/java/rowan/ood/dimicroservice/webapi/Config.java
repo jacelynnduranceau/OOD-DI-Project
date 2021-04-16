@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import rowan.ood.dimicroservice.pokemon.*;
 
 @Configuration
 public class Config {
@@ -22,13 +23,23 @@ public class Config {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+//    @Bean
+//    public PrimeTester getPrimeTester() {
+//        return new PrimeTesterImpl(jdbcTemplate);
+//    }
+//
+//    @Bean
+//    public PrimeMicroservice getPrimeMicroService() {
+//        return new PrimeMicroservice(this.getPrimeTester());
+//    }
+
     @Bean
-    public PrimeTester getPrimeTester() {
-        return new PrimeTesterImpl(jdbcTemplate);
+    public PokemonGen getPokemon() {
+        return new PokemonGenSeven(jdbcTemplate);
     }
 
     @Bean
     public PrimeMicroservice getPrimeMicroService() {
-        return new PrimeMicroservice(this.getPrimeTester());
+        return new PrimeMicroservice(this.getPokemon());
     }
 }
