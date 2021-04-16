@@ -25,17 +25,17 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rowan.ood.dimicroservice.pokemon.PokemonGen;
 
-import java.util.Set;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class PrimeMicroserviceTest {
 
-//    static Endpoints endpoints;
+    static Endpoints endpoints;
     static final String BaseUrl = "http://127.0.0.1:8080/"; // Location of the web api
     static PokemonGen mockPokemonGenTester;
-    static Set<String> pokemonToTest;
+    static HashMap<String, String> pokemonToTest;
 
     @BeforeAll
     static void init() {
@@ -47,12 +47,12 @@ public class PrimeMicroserviceTest {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-//        endpoints = client.create(Endpoints.class);
+        endpoints = client.create(Endpoints.class);
 
         // Perform the injection and retrieve testing beans
         ApplicationContext context = new AnnotationConfigApplicationContext(ConfigTest.class);
         mockPokemonGenTester = context.getBean(PokemonGen.class);
-        pokemonToTest = (Set<String>) context.getBean("pokemonToTest");
+        pokemonToTest = (HashMap<String, String>) context.getBean("pokemonToTest");
 
     }
 
@@ -61,18 +61,20 @@ public class PrimeMicroserviceTest {
     void primeChecks() {
         try {
             // Test all numbers in the test suite
-            for (String id : pokemonToTest) {
+            for (String id : pokemonToTest.keySet()) {
+                System.out.println("Finding Pokemon: " + id);
+                //Invoke the webapi to compute the answer
+                Call<Pokemon> pokemonTestResponse = endpoints.findPokemonTestResponse(id);
+                Pokemon resp = pokemonTestResponse.execute().body();
+                System.out.println("Found Pokemon: " + resp.getName());
+                assertNotNull(resp);
 
-                // Invoke the webapi to compute the answer
-//                Call<Pokemon> primeTestResponse = endpoints.getPrimeTestResponse(id);
-//                Pokemon resp = primeTestResponse.execute().body();
-//                assertNotNull(resp);
-
-               // assertEquals(resp.getNumber(), number);
-                // Verify that the webapi's answer is the same as the mock test's answer
-               // assertEquals(resp.getAnswer(), mockPrimeTester.isPrime(number));
+                assertEquals(resp.getId(), id);
+                //Verify that the webapi's answer is the same as the mock test's answer
+                assertEquals(resp.getName(), mockPokemonGenTester.getPokemonName(Integer.parseInt(id)));
             }
         } catch (Exception e) {
+
             assertTrue(false);
         }
     }

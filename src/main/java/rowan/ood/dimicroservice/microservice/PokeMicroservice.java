@@ -34,8 +34,20 @@ public class PokeMicroservice {
     }
 
     @GetMapping("/pokemon")
-    public String primetest(@Query(value = "p") String p) {
+    public String randomPokemon() {
         // Use the injected prime tested to test for primality.
         return new Gson().toJson(pokemonGen.generatePokemon());
+    }
+
+    @GetMapping("/pokemon-id")
+    public String findPokemon(@Query(value = "p") String p) {
+        // Use the injected prime tested to test for primality.
+        try {
+            return new Gson().toJson(pokemonGen.generatePokemon(Integer.parseInt(p)));
+        }
+        catch (NumberFormatException e) {
+            e.getMessage();
+            return new Gson().toJson("Error, Enter a Number");
+        }
     }
 }

@@ -48,7 +48,7 @@ public class ConfigTest {
     // Named bean example
     @Bean(name = "pokemonToTest")
     @Primary
-    public static Set<String> getTests() {
-        return tests.keySet();
+    public static Map<String, String> getTests() {
+        return tests;
     }
 }

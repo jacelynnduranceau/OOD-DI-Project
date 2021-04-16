@@ -21,7 +21,7 @@ public abstract class PokemonGen {
 
     abstract int generatePokeID();
 
-    private Pokemon generatePokemon(int pokeID){
+    public Pokemon generatePokemon(int pokeID){
         Pokemon pokemon = new Pokemon(String.valueOf(pokeID), getPokemonName(pokeID),
                               getPokemonHeight(pokeID),
                               getPokemonWeight(pokeID),
