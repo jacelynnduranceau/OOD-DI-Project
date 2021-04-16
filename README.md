@@ -18,14 +18,14 @@
 
 ___
 
-###HOW TO INSTALL AND RUN
+### HOW TO INSTALL AND RUN
 
- ####Using Maven support in IntelliJ IDEA:
+ #### Using Maven support in IntelliJ IDEA:
 - add maven framework support to the project
 - run the maven command ```mvn compile jib:dockerBuild```
 - run main ( the alternative is to use docker)
 
-####Using Docker on the Command Line
+#### Using Docker on the Command Line
   Follow these steps
 - launch docker desktop app (must be previously installed)
 - run this command to launch docker image ```docker run -d -p 8080:8080 --rm --name pokemoncatcher rowan.ood/pokemoncatcher```
