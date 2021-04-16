@@ -9,9 +9,9 @@ package rowan.ood.dimicroservice.microservice;
 
 public class Response {
     String number;
-    Boolean answer;
+    String answer;
 
-    public Response(String number, Boolean answer) {
+    public Response(String number, String answer) {
         this.number = number;
         this.answer = answer;
     }
@@ -20,7 +20,7 @@ public class Response {
         return number;
     }
 
-    public Boolean getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 }
