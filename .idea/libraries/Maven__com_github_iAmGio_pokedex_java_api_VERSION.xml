@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.iAmGio:pokedex-java-api:VERSION">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/iAmGio/pokedex-java-api/VERSION/pokedex-java-api-VERSION.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/iAmGio/pokedex-java-api/VERSION/pokedex-java-api-VERSION-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/iAmGio/pokedex-java-api/VERSION/pokedex-java-api-VERSION-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

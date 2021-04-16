@@ -13,5 +13,5 @@ public interface PrimeTester {
     // String used a parameter to accommodate testing of arbitrary sized prime numbers
     boolean isPrime(String number);
 
-    String isPokemon(String number);
+    String getPokemonName(int number);
 }

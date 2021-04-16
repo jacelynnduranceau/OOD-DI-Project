@@ -26,14 +26,15 @@ public class PrimeMicroservice {
         this.primeTester = primeTester;
     }
 
-    @GetMapping("/info")
+    @GetMapping("/pokeinfo")
     public String info() {
-        return "The world's best prime testing microservice";
+        return "Gotta Catch 'em All!";
     }
 
-    @GetMapping("/primetest")
+    @GetMapping("/pokemon")
     public String primetest(@Query(value = "p") String p) {
         // Use the injected prime tested to test for primality.
-        return new Gson().toJson(new Response(p, primeTester.isPokemon(p)));
+        return new Gson().toJson(new Response(p, primeTester.getPokemonName(Integer.parseInt(p))));
     }
+
 }
