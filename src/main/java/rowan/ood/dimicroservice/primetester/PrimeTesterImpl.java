@@ -8,6 +8,7 @@ package rowan.ood.dimicroservice.primetester;
  *
  */
 
+import eu.iamgio.pokedex.pokemon.Pokemon;
 import rowan.ood.dimicroservice.microservice.PrimeTester;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -48,5 +49,12 @@ public class PrimeTesterImpl implements PrimeTester {
             return answer;
         }
     }
+
+    public String isPokemon(String p) {
+        Pokemon pokemon = Pokemon.fromId(Integer.valueOf(p));
+        return pokemon.getName();
+    }
+
+
 
 }

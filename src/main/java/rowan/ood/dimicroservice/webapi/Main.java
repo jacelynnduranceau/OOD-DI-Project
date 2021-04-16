@@ -7,6 +7,9 @@ package rowan.ood.dimicroservice.webapi;
  *
  */
 
+import eu.iamgio.pokedex.pokemon.Pokemon;
+import eu.iamgio.pokedex.pokemon.PokemonType;
+import eu.iamgio.pokedex.util.Pair;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
