@@ -12,7 +12,7 @@ package rowan.ood.dimicroservice.microservice.test;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import rowan.ood.dimicroservice.microservice.PrimeTester;
-import rowan.ood.dimicroservice.microservice.Response;
+import rowan.ood.dimicroservice.microservice.Pokemon;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +23,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import java.util.List;
+
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,8 +63,8 @@ public class PrimeMicroserviceTest {
             for (String number : numbersToTest) {
 
                 // Invoke the webapi to compute the answer
-                Call<Response> primeTestResponse = endpoints.getPrimeTestResponse(number);
-                Response resp = primeTestResponse.execute().body();
+                Call<Pokemon> primeTestResponse = endpoints.getPrimeTestResponse(number);
+                Pokemon resp = primeTestResponse.execute().body();
                 assertNotNull(resp);
 
                 assertEquals(resp.getNumber(), number);

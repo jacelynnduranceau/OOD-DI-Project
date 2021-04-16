@@ -11,9 +11,9 @@ package rowan.ood.dimicroservice.microservice.test;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import rowan.ood.dimicroservice.microservice.Response;
+import rowan.ood.dimicroservice.microservice.Pokemon;
 
 public interface Endpoints {
     @GET("primetest")
-    Call<Response> getPrimeTestResponse(@Query("p") String p);
+    Call<Pokemon> getPrimeTestResponse(@Query("p") String p);
 }

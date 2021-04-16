@@ -14,4 +14,10 @@ public interface PrimeTester {
     boolean isPrime(String number);
 
     String getPokemonName(int number);
+
+    String getPokemonHeight(int number);
+
+    String getPokemonWeight(int number);
+
+    String getPokemonType(int number);
 }
