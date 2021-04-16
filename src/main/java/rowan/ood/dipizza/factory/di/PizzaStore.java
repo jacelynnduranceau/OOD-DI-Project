@@ -20,7 +20,7 @@ public class PizzaStore {
 
 	@Autowired
 	public PizzaStore(PizzaIngredientFactory ingredientFactory) {
-		this.ingredientFactory = ingredientFactory;
+		this.ingredientFactory =  ingredientFactory;
 	}
 
 	// createPizza went from being setup as a (abstract) factory method

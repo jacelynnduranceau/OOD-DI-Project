@@ -39,7 +39,7 @@ public class PrimeTesterImpl implements PrimeTester {
         );
     }
 
-    public boolean isPrime(String p) {
+   /* public boolean isPrime(String p) {
 
         final int Certainty = 30;
         String querystr = String.format("SELECT answer FROM primetests WHERE number = '%s'", p);
@@ -55,7 +55,7 @@ public class PrimeTesterImpl implements PrimeTester {
             jdbcTemplate.execute(querystr);
             return answer;
         }
-    }
+    }*/
 
     public String getPokemonName(int pokeID) {
 
@@ -75,8 +75,7 @@ public class PrimeTesterImpl implements PrimeTester {
             String json = responseBody.string();
             JsonObject pokeInfoJson = new JsonParser().parse(json).getAsJsonObject();
             JsonElement pokeName = pokeInfoJson.get("name"); //JsonArray
-            System.out.println(pokeName.toString());
-            pokemon = pokeName.toString();
+            pokemon = pokeName.toString().replaceAll("\"", "");
         }
         catch (Exception e) {
             e.getMessage();
@@ -102,7 +101,6 @@ public class PrimeTesterImpl implements PrimeTester {
             String json = responseBody.string();
             JsonObject pokeInfoJson = new JsonParser().parse(json).getAsJsonObject();
             JsonElement pokeHeight = pokeInfoJson.get("height"); //JsonArray
-            System.out.println(pokeHeight.toString());
             height = pokeHeight.toString();
         }
         catch (Exception e) {
@@ -130,7 +128,6 @@ public class PrimeTesterImpl implements PrimeTester {
             String json = responseBody.string();
             JsonObject pokeInfoJson = new JsonParser().parse(json).getAsJsonObject();
             JsonElement pokeWeight = pokeInfoJson.get("weight"); //JsonArray
-            System.out.println(pokeWeight.toString());
             weight = pokeWeight.toString();
         }
         catch (Exception e) {
@@ -163,7 +160,7 @@ public class PrimeTesterImpl implements PrimeTester {
             JsonElement pokeTypeName = pokeTypeJson.get("type");
             JsonObject jsonType = pokeTypeName.getAsJsonObject();
             JsonElement typeName = jsonType.get("name");
-            type = typeName.toString();
+            type = typeName.toString().replaceAll("\"", "");
         }
         catch (Exception e) {
             e.getMessage();

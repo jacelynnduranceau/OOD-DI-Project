@@ -11,7 +11,7 @@ package rowan.ood.dimicroservice.microservice;
 public interface PrimeTester {
     // Returns true if the number is a prime number, False otherwise
     // String used a parameter to accommodate testing of arbitrary sized prime numbers
-    boolean isPrime(String number);
+//    boolean isPrime(String number);
 
     String getPokemonName(int number);
 

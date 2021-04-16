@@ -1,5 +1,6 @@
 package rowan.ood.dimicroservice.pokemon;
 
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -7,10 +8,19 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import rowan.ood.dimicroservice.microservice.Pokemon;
 
-public class PokemonGen {
+public abstract class PokemonGen {
 
-    public PokemonGen(){}
+    abstract int generatePokeID();
+
+    public Pokemon generatePokemon(int pokeID){
+        Pokemon pokemon = new Pokemon(String.valueOf(pokeID), getPokemonName(pokeID),
+                              getPokemonHeight(pokeID),
+                              getPokemonWeight(pokeID),
+                              getPokemonType(pokeID));
+        return pokemon;
+    }
 
     public String getPokemonName(int pokeID) {
 
@@ -30,8 +40,7 @@ public class PokemonGen {
             String json = responseBody.string();
             JsonObject pokeInfoJson = new JsonParser().parse(json).getAsJsonObject();
             JsonElement pokeName = pokeInfoJson.get("name"); //JsonArray
-            System.out.println(pokeName.toString());
-            pokemon = pokeName.toString();
+            pokemon = pokeName.toString().replaceAll("\"", "");
         }
         catch (Exception e) {
             e.getMessage();
@@ -57,7 +66,6 @@ public class PokemonGen {
             String json = responseBody.string();
             JsonObject pokeInfoJson = new JsonParser().parse(json).getAsJsonObject();
             JsonElement pokeHeight = pokeInfoJson.get("height"); //JsonArray
-            System.out.println(pokeHeight.toString());
             height = pokeHeight.toString();
         }
         catch (Exception e) {
@@ -85,7 +93,6 @@ public class PokemonGen {
             String json = responseBody.string();
             JsonObject pokeInfoJson = new JsonParser().parse(json).getAsJsonObject();
             JsonElement pokeWeight = pokeInfoJson.get("weight"); //JsonArray
-            System.out.println(pokeWeight.toString());
             weight = pokeWeight.toString();
         }
         catch (Exception e) {
@@ -118,7 +125,7 @@ public class PokemonGen {
             JsonElement pokeTypeName = pokeTypeJson.get("type");
             JsonObject jsonType = pokeTypeName.getAsJsonObject();
             JsonElement typeName = jsonType.get("name");
-            type = typeName.toString();
+            type = typeName.toString().replaceAll("\"", "");
         }
         catch (Exception e) {
             e.getMessage();

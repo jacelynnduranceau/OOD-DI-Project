@@ -12,8 +12,10 @@ public class PokemonGenEight extends PokemonGen{
         super();
     }
 
+    @Override
     public int generatePokeID() {
         pokeID = random.nextInt((MAX_ID - MIN_ID) + 1) + MIN_ID;
         return pokeID;
     }
+
 }
