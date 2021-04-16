@@ -25,7 +25,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rowan.ood.dimicroservice.pokemon.PokemonGen;
 
-import java.util.HashMap;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,7 +35,7 @@ public class PrimeMicroserviceTest {
     static Endpoints endpoints;
     static final String BaseUrl = "http://127.0.0.1:8080/"; // Location of the web api
     static PokemonGen mockPokemonGenTester;
-    static HashMap<String, String> pokemonToTest;
+    static Set<String> pokemonToTest;
 
     @BeforeAll
     static void init() {
@@ -52,8 +52,7 @@ public class PrimeMicroserviceTest {
         // Perform the injection and retrieve testing beans
         ApplicationContext context = new AnnotationConfigApplicationContext(ConfigTest.class);
         mockPokemonGenTester = context.getBean(PokemonGen.class);
-        pokemonToTest = (HashMap<String, String>) context.getBean("pokemonToTest");
-
+        pokemonToTest = (Set<String>) context.getBean("pokemonToTest");
     }
 
     // Test microservice using numbers listed within the mock prime tester.
@@ -61,7 +60,7 @@ public class PrimeMicroserviceTest {
     void primeChecks() {
         try {
             // Test all numbers in the test suite
-            for (String id : pokemonToTest.keySet()) {
+            for (String id : pokemonToTest) {
                 System.out.println("Finding Pokemon: " + id);
                 //Invoke the webapi to compute the answer
                 Call<Pokemon> pokemonTestResponse = endpoints.findPokemonTestResponse(id);
@@ -74,7 +73,6 @@ public class PrimeMicroserviceTest {
                 assertEquals(resp.getName(), mockPokemonGenTester.getPokemonName(Integer.parseInt(id)));
             }
         } catch (Exception e) {
-
             assertTrue(false);
         }
     }
