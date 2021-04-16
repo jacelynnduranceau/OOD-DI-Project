@@ -1,5 +1,7 @@
 package rowan.ood.dimicroservice.pokemon;
 
+import rowan.ood.dimicroservice.microservice.Pokemon;
+
 import java.util.Random;
 
 public class PokemonGenTwo extends PokemonGen{

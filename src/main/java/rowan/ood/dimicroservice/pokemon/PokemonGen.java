@@ -22,6 +22,10 @@ public abstract class PokemonGen {
         return pokemon;
     }
 
+    public Pokemon generatePokemon(){
+        return generatePokemon(generatePokeID());
+    }
+
     public String getPokemonName(int pokeID) {
 
         String pokemon = "";

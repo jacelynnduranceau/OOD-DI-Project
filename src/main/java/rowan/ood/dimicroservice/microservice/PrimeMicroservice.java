@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import retrofit2.http.Query;
+import rowan.ood.dimicroservice.pokemon.PokemonGen;
+import rowan.ood.dimicroservice.pokemon.PokemonGenOne;
 
 @Service
 @RestController
@@ -34,10 +36,9 @@ public class PrimeMicroservice {
     @GetMapping("/pokemon")
     public String primetest(@Query(value = "p") String p) {
         // Use the injected prime tested to test for primality.
-        return new Gson().toJson(new Pokemon(p, primeTester.getPokemonName(Integer.parseInt(p)),
-                                primeTester.getPokemonHeight(Integer.parseInt(p)),
-                                primeTester.getPokemonWeight(Integer.parseInt(p)),
-                                primeTester.getPokemonType(Integer.parseInt(p))));
+        PokemonGenOne pokeOne = new PokemonGenOne();
+        Pokemon pokemon = pokeOne.generatePokemon();
+        return new Gson().toJson(pokemon);
     }
 
 }
