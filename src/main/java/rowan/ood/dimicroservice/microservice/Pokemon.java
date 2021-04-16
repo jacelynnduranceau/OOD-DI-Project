@@ -2,8 +2,12 @@ package rowan.ood.dimicroservice.microservice;
 
 /**
  * @author Dr. Baliga
+ * @author Jacelynn Duranceau
+ * @author Joseph Frost
+ * @author Swanora Campbell
+ * @author Marc Colin
  *
- * Web API's response for prime testing
+ * Web API's response for pokemon testing
  *
  */
 

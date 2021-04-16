@@ -1,43 +1,33 @@
-package rowan.ood.dimicroservice.primetester;
-
-/**
- * @author Dr. Baliga
- *
- * Implementation of prime testing using BigInteger's implementation of
- * the Miller-Rabin test. Tested numbers are persisted in a H2 database
- *
- */
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
-import rowan.ood.dimicroservice.microservice.PrimeTester;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
-import java.math.BigInteger;
-
-@Component
-public class PrimeTesterImpl implements PrimeTester {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    public PrimeTesterImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-        jdbcTemplate.execute("DROP TABLE primetests IF EXISTS");
-        jdbcTemplate.execute(
-                "CREATE TABLE primetests(" +
-                        "id SERIAL, " +
-                        "number VARCHAR(255), " +
-                        "answer INT)"
-        );
-    }
+//package rowan.ood.dimicroservice.primetester;
+//
+///**
+// * @author Dr. Baliga
+// *
+// * Implementation of prime testing using BigInteger's implementation of
+// * the Miller-Rabin test. Tested numbers are persisted in a H2 database
+// *
+// */
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.jdbc.core.JdbcTemplate;
+//import org.springframework.stereotype.Component;
+//
+//@Component
+//public class PrimeTesterImpl {
+//
+//    private JdbcTemplate jdbcTemplate;
+//
+//    @Autowired
+//    public PrimeTesterImpl(JdbcTemplate jdbcTemplate) {
+//        this.jdbcTemplate = jdbcTemplate;
+//        jdbcTemplate.execute("DROP TABLE primetests IF EXISTS");
+//        jdbcTemplate.execute(
+//                "CREATE TABLE primetests(" +
+//                        "id SERIAL, " +
+//                        "number VARCHAR(255), " +
+//                        "answer INT)"
+//        );
+//    }
 
    /* public boolean isPrime(String p) {
 
@@ -56,4 +46,4 @@ public class PrimeTesterImpl implements PrimeTester {
             return answer;
         }
     }*/
-}
+//}
