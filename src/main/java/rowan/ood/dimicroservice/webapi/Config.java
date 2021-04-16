@@ -7,9 +7,7 @@ package rowan.ood.dimicroservice.webapi;
  *
  */
 
-import rowan.ood.dimicroservice.microservice.PrimeMicroservice;
-import rowan.ood.dimicroservice.microservice.PrimeTester;
-import rowan.ood.dimicroservice.primetester.PrimeTesterImpl;
+import rowan.ood.dimicroservice.microservice.PokeMicroservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +37,7 @@ public class Config {
     }
 
     @Bean
-    public PrimeMicroservice getPrimeMicroService() {
-        return new PrimeMicroservice(this.getPokemon());
+    public PokeMicroservice getPrimeMicroService() {
+        return new PokeMicroservice(this.getPokemon());
     }
 }

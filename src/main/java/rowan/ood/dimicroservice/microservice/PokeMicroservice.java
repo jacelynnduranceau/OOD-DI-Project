@@ -19,12 +19,12 @@ import rowan.ood.dimicroservice.pokemon.PokemonGenOne;
 
 @Service
 @RestController
-public class PrimeMicroservice {
+public class PokeMicroservice {
 
     PokemonGen pokemonGen;
 
     @Autowired
-    public PrimeMicroservice(PokemonGen pokemonGen) {
+    public PokeMicroservice(PokemonGen pokemonGen) {
         this.pokemonGen = pokemonGen;
     }
 
