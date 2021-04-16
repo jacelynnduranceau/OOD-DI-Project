@@ -3,6 +3,10 @@ package rowan.ood.dimicroservice.microservice.test;
 
 /**
  * @author Dr. Baliga
+ * @author Jacelynn Duranceau
+ * @author Joseph Frost
+ * @author Swanora Campbell
+ * @author Marc Colin
  *
  * Web API unit test using Retrofit client
  *
@@ -30,7 +34,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-public class PrimeMicroserviceTest {
+public class PokemonMicroserviceTest {
 
     static Endpoints endpoints;
     static final String BaseUrl = "http://127.0.0.1:8080/"; // Location of the web api
@@ -55,11 +59,11 @@ public class PrimeMicroserviceTest {
         pokemonToTest = (Set<String>) context.getBean("pokemonToTest");
     }
 
-    // Test microservice using numbers listed within the mock prime tester.
+    // Test microservice using pokemon ids listed within the mock prime tester.
     @Test
-    void primeChecks() {
+    void pokemonChecks() {
         try {
-            // Test all numbers in the test suite
+            // Test all pokemon ids in the test suite
             for (String id : pokemonToTest) {
                 System.out.println("Finding Pokemon: " + id);
                 //Invoke the webapi to compute the answer
@@ -69,7 +73,7 @@ public class PrimeMicroserviceTest {
                 assertNotNull(resp);
 
                 assertEquals(resp.getId(), id);
-                //Verify that the webapi's answer is the same as the mock test's answer
+                //Verify that the webapi's answer for the pokemon's name is the same as the mock test's answer
                 assertEquals(resp.getName(), mockPokemonGenTester.getPokemonName(Integer.parseInt(id)));
             }
         } catch (Exception e) {

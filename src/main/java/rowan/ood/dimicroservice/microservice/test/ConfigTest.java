@@ -2,6 +2,10 @@ package rowan.ood.dimicroservice.microservice.test;
 
 /**
  * @author Dr. Baliga
+ * @author Jacelynn Duranceau
+ * @author Joseph Frost
+ * @author Swanora Campbell
+ * @author Marc Colin
  *
  * Mock configuration for testing the microservice
  *

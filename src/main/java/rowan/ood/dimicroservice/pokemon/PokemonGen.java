@@ -11,6 +11,17 @@ import okhttp3.ResponseBody;
 import org.springframework.jdbc.core.JdbcTemplate;
 import rowan.ood.dimicroservice.microservice.Pokemon;
 
+
+/**
+ * @author Jacelynn Duranceau
+ * @author Joseph Frost
+ * @author Swanora Campbell
+ * @author Marc Colin
+ *
+ * Abstract class for Pokemon generations. Creates Pokemon objects based on
+ * pokemon IDs.
+ *
+ */
 public abstract class PokemonGen {
 
     private JdbcTemplate jdbcTemplate;

@@ -3,6 +3,10 @@ package rowan.ood.dimicroservice.microservice.test;
 
 /**
  * @author Dr. Baliga
+ * @author Jacelynn Duranceau
+ * @author Joseph Frost
+ * @author Swanora Campbell
+ * @author Marc Colin
  *
  * Endpoints supported by the web api
  *
