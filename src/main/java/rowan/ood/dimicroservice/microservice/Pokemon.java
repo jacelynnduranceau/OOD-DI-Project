@@ -17,7 +17,9 @@ public class Pokemon {
     String height;
     String weight;
     String type;
+    Boolean caught = false;
 
+    public Pokemon(){}
 
     public Pokemon(String id, String name, String height, String weight, String type) {
         this.id = id;
@@ -45,5 +47,33 @@ public class Pokemon {
 
     public String getName() {
         return name;
+    }
+
+    public Boolean getCaught() {
+        return caught;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setCaught(Boolean caught) {
+        this.caught = caught;
     }
 }

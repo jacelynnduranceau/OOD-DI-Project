@@ -9,7 +9,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import rowan.ood.dimicroservice.microservice.Pokemon;
+
+import java.sql.ResultSet;
 
 
 /**
@@ -28,16 +31,57 @@ public abstract class PokemonGen {
 
     public PokemonGen(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
+        jdbcTemplate.execute("DROP TABLE caughtpokemon IF EXISTS");
+        jdbcTemplate.execute(
+                "CREATE TABLE caughtpokemon(" +
+                        "id SERIAL, " +
+                        "poke_id VARCHAR(255), " +
+                        "name VARCHAR(255), " +
+                        "height VARCHAR(255), " +
+                        "weight VARCHAR(255), " +
+                        "type VARCHAR(255))"
+
+        );
     }
 
     abstract int generatePokeID();
 
     public Pokemon generatePokemon(int pokeID){
-        Pokemon pokemon = new Pokemon(String.valueOf(pokeID), getPokemonName(pokeID),
-                              getPokemonHeight(pokeID),
-                              getPokemonWeight(pokeID),
-                              getPokemonType(pokeID));
-        return pokemon;
+
+        var querystr = "SELECT * FROM caughtpokemon WHERE poke_id = ?";
+
+        var rm = (RowMapper<Pokemon>) (ResultSet result, int rowNum) -> {
+
+            var pokemon = new Pokemon();
+
+            pokemon.setId(result.getString("poke_id"));
+            pokemon.setName(result.getString("name"));
+            pokemon.setHeight(result.getString("height"));
+            pokemon.setWeight(result.getString("weight"));
+            pokemon.setType(result.getString("type"));
+            pokemon.setCaught(true);
+
+            return pokemon;
+        };
+
+        try {
+            Pokemon pokemon = (Pokemon) jdbcTemplate.queryForObject(querystr, new Object[]{pokeID}, rm);
+            return pokemon;
+        }
+        catch(Exception e) {
+            Pokemon pokemon = new Pokemon(String.valueOf(pokeID), getPokemonName(pokeID),
+                                        getPokemonHeight(pokeID),
+                                        getPokemonWeight(pokeID),
+                                        getPokemonType(pokeID));
+            querystr = String.format("INSERT into caughtpokemon (poke_id,name,height,weight,type) " +
+                                    "VALUES ('%s','%s','%s','%s','%s')",
+                                    pokeID,getPokemonName(pokeID),
+                                    getPokemonHeight(pokeID),
+                                    getPokemonWeight(pokeID),
+                                    getPokemonType(pokeID));
+            jdbcTemplate.execute(querystr);
+            return pokemon;
+        }
     }
 
     public Pokemon generatePokemon(){
